@@ -5,18 +5,25 @@ from django.db import migrations, models
 
 class Migration(migrations.Migration):
 
-    dependencies = [
-        ('houses', '0002_auto_20191016_1908'),
-    ]
+    dependencies = [("houses", "0002_auto_20191016_1908")]
 
     operations = [
         migrations.AlterModelOptions(
-            name='house',
-            options={'ordering': ['name'], 'verbose_name': 'Дом', 'verbose_name_plural': 'Дома'},
+            name="house",
+            options={
+                "ordering": ["name"],
+                "verbose_name": "Дом",
+                "verbose_name_plural": "Дома",
+            },
         ),
         migrations.AddField(
-            model_name='house',
-            name='photo',
-            field=models.ImageField(blank=True, default='', upload_to='houses/photos', verbose_name='фото'),
+            model_name="house",
+            name="photo",
+            field=models.ImageField(
+                blank=True,
+                default="",
+                upload_to="houses/photos",
+                verbose_name="фото",
+            ),
         ),
     ]
