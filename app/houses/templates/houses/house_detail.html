@@ -1,15 +1,26 @@
 {% extends 'index.html' %}
-
+{% block title %}
+Дом {{ house.name }}
+{% endblock %}
 {% block application %}
-    {% for house in houses %}
         <fieldset>
+            <a href="{% url 'home' %}">Назад</a>
             <h2>{{house.name}}</h2>
             {% if house.photo %}
                 <img src="{{house.photo.url}}" alt="" width=150>
             {% endif %}
             <i>{{house.price}}</i>
-            <p>{{house.description}}</p>
-
+            <p>{{house.description}}</p>            
         </fieldset>
-    {% endfor %}
+        <fieldset>
+            {% if sended %}
+            Спасибо! Ваша заявка принята
+            {% endif %}
+            <h2>Заявка</h2>
+            <form method="POST">
+                {% csrf_token %}
+                {{ form.as_p }}
+                <input type="submit" >
+            </form>
+        </fieldset>
 {% endblock %}

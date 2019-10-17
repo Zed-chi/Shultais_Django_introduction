@@ -1,9 +1,15 @@
 {% extends 'index.html' %}
 
 {% block application %}
+    <form method="GET">
+        {{form.as_p}}
+        <input type="submit">
+    </form>
     {% for house in houses %}
         <fieldset>
-            <h2>{{house.name}}</h2>
+            <a href="{% url 'house' id=house.id %}">
+                <h2>{{house.name}}</h2>
+            </a>            
             {% if house.photo %}
                 <img src="{{house.photo.url}}" alt="" width=150>
             {% endif %}
